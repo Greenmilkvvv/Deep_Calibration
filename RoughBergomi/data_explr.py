@@ -7,9 +7,11 @@ import pandas as pd
 
 f = gzip.GzipFile(r"../Data/rBergomiTrainSet.txt.gz", "r")
 dat=np.load(f)
-xx=dat[:,:4]
-yy=dat[:,4:]
+xx=dat[:,:4] # 4 列参数
+yy=dat[:,4:] # 8(maturities) * 11(strikes) = 88(implied volatilities)
+# 11 个行权价
 strikes=np.array([0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5 ])
+# 8 个到期时间
 maturities=np.array([0.1,0.3,0.6,0.9,1.2,1.5,1.8,2.0 ])
 
 print(xx.shape)
@@ -17,3 +19,6 @@ print(yy.shape)
 
 
 # %%
+print(dat)
+
+
